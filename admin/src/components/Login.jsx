@@ -9,7 +9,7 @@ const Login = ({ setToken }) => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
     try {
       e.preventDefault();
-      const response = await axios.post(`${backendUrl}/api/user/admin`, {
+      const response = await axios.post("https://krisikunjo.vercel.app/api/user/admin", {
         email,
         password,
        
