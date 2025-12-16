@@ -24,7 +24,6 @@ app.use(cors({origin: allowedOrigins,
      allowedHeaders: ["Content-Type", "Authorization", "token"]
 
 }))
-app.options("*", cors())
 
 //api endpoints
 app.use('/api/user', userRouter)
