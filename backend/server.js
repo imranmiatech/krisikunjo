@@ -35,4 +35,5 @@ app.get('/',(req,res)=>{
     res.send('Api working')
 })
 
-app.listen(port, ()=> console.log('Server stared on port : '+port))
+// app.listen(port, ()=> console.log('Server stared on port : '+port))
+export default app;
