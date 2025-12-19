@@ -4,6 +4,7 @@ import productModel from "../models/productModel.js";
 
 const addProduct = async (req, res) => {
    try {
+        const base64Image = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
         const {name, description, price, category, subCategory, sizes, bestseller} = req.body
         const image1 = req.files.image1 && req.files.image1[0]
         const image2 = req.files.image2 && req.files.image2[0]
