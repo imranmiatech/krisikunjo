@@ -14,7 +14,7 @@ const app = express()
 const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
-const allowedOrigins = ["https://krisikunjo.shop", "https://krisikunjo-admin.vercel.app"]
+const allowedOrigins = ["https://krisikunjo.shop","https://krisikunjo.vercel.app","https://krisikunjo-admin.vercel.app"]
 
 //middleware
 app.use(express.json())
