@@ -9,7 +9,7 @@ const List = ({token}) => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const fetchList = async () => {
         try {
-          const response = await axios.get("https://krisikunjo.vercel.app/api/product/list")
+          const response = await axios.get("https://krisikunjo-backend.vercel.app/api/product/list")
           if(response.data.success){
             setList(response.data.products)
           } else{
@@ -23,7 +23,7 @@ const List = ({token}) => {
 
   const removeProduct = async (id) => {
     try {
-       const response = await axios.post("https://krisikunjo.vercel.app/api/product/remove", {id},{ headers: {token}})
+       const response = await axios.post("https://krisikunjo-backend.vercel.app/api/product/remove", {id},{ headers: {token}})
        if(response.data.success){
             setList(response.data.products)
             await fetchList();
