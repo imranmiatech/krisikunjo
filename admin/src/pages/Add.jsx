@@ -281,7 +281,6 @@
 // };
 
 // export default Add;
-
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
@@ -300,13 +299,11 @@ const Add = ({ token }) => {
   const [price, setPrice] = useState("");
   const [bestseller, setBestseller] = useState(false);
 
-  // UPDATED PART
+  // size input (UPDATED)
   const [sizes, setSizes] = useState([]);
   const [sizeInput, setSizeInput] = useState("");
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-  // add size handler
+  // add size on Enter / comma
   const handleAddSize = (e) => {
     if (e.key === "Enter" || e.key === ",") {
       e.preventDefault();
@@ -337,26 +334,24 @@ const Add = ({ token }) => {
       image3 && formData.append("image3", image3);
       image4 && formData.append("image4", image4);
 
-<<<<<<< HEAD
       const response = await axios.post(
         "https://krisikunjo-backend.vercel.app/api/product/add",
         formData,
         { headers: { token } }
       );
-=======
-      const response = await axios.post("https://krisikunjo-backend.vercel.app/api/product/add",formData, { headers: {token}});
->>>>>>> dfad5336e5e169918a51f8fa061473cda4ff35a9
 
       if (response.data.success) {
         toast.success(response.data.message);
 
         setName("");
         setDescription("");
+        setCategory("");
+        setSubCategory("");
+        setPrice("");
         setImage1(false);
         setImage2(false);
         setImage3(false);
         setImage4(false);
-        setPrice("");
         setSizes([]);
         setSizeInput("");
         setBestseller(false);
@@ -406,8 +401,8 @@ const Add = ({ token }) => {
       <div className="w-full">
         <p className="mb-2">Product Name</p>
         <input
-          onChange={(e) => setName(e.target.value)}
           value={name}
+          onChange={(e) => setName(e.target.value)}
           className="w-full max-w-[500px] px-3 py-2"
           type="text"
           placeholder="Type here!"
@@ -419,15 +414,15 @@ const Add = ({ token }) => {
       <div className="w-full">
         <p className="mb-2">Product Description</p>
         <textarea
-          onChange={(e) => setDescription(e.target.value)}
           value={description}
+          onChange={(e) => setDescription(e.target.value)}
           className="w-full max-w-[500px] px-3 py-2"
-          placeholder="write content here"
+          placeholder="Write description"
           required
         />
       </div>
 
-      {/* Category */}
+      {/* Category & price */}
       <div className="flex flex-col sm:flex-row gap-2 w-full sm:gap-8">
         <div>
           <p className="mb-2">Product Category</p>
@@ -435,6 +430,7 @@ const Add = ({ token }) => {
             onChange={(e) => setCategory(e.target.value)}
             className="w-full px-3 py-2"
           >
+            <option value="">Select</option>
             <option value="কৃষি সরঞ্জাম">কৃষি সরঞ্জাম</option>
             <option value="সার ও কীটনাশক">সার ও কীটনাশক</option>
             <option value="ফসল ও উদ্ভিদ">ফসল ও উদ্ভিদ</option>
@@ -447,6 +443,7 @@ const Add = ({ token }) => {
             onChange={(e) => setSubCategory(e.target.value)}
             className="w-full px-3 py-2"
           >
+            <option value="">Select</option>
             <option value="ফল উদ্ভিদ">ফল উদ্ভিদ</option>
             <option value="চারা">চারা</option>
             <option value="বীজ">বীজ</option>
@@ -456,22 +453,21 @@ const Add = ({ token }) => {
         <div>
           <p className="mb-2">Product Price</p>
           <input
-            onChange={(e) => setPrice(e.target.value)}
             value={price}
+            onChange={(e) => setPrice(e.target.value)}
             className="w-full px-3 py-2 sm:w-[120px]"
             type="number"
-            placeholder="Enter price in BDT"
+            placeholder="BDT"
           />
         </div>
       </div>
 
-      {/* UPDATED Product sizes */}
+      {/* Size / quantity input */}
       <div>
-        <p className="mb-2">Product sizes / quantity</p>
-
+        <p className="mb-2">Product size / quantity</p>
         <input
           type="text"
-          placeholder="Type: 100pcs, 2 fit, 5kg"
+          placeholder="100pcs, 2 fit, 5kg"
           value={sizeInput}
           onChange={(e) => setSizeInput(e.target.value)}
           onKeyDown={handleAddSize}
@@ -496,12 +492,12 @@ const Add = ({ token }) => {
       {/* Bestseller */}
       <div>
         <input
-          onChange={() => setBestseller((prev) => !prev)}
-          checked={bestseller}
           type="checkbox"
+          checked={bestseller}
+          onChange={() => setBestseller((prev) => !prev)}
           id="bestseller"
         />
-        <label className="cursor-pointer ml-2" htmlFor="bestseller">
+        <label htmlFor="bestseller" className="ml-2 cursor-pointer">
           Add to bestseller
         </label>
       </div>
