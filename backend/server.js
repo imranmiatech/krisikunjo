@@ -36,4 +36,8 @@ app.get('/',(req,res)=>{
 })
 
 // app.listen(port, ()=> console.log('Server stared on port : '+port))
+<<<<<<< HEAD
 export default app;
+=======
+export default app;
+>>>>>>> dfad5336e5e169918a51f8fa061473cda4ff35a9

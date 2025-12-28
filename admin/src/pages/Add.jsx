@@ -337,11 +337,15 @@ const Add = ({ token }) => {
       image3 && formData.append("image3", image3);
       image4 && formData.append("image4", image4);
 
+<<<<<<< HEAD
       const response = await axios.post(
         "https://krisikunjo-backend.vercel.app/api/product/add",
         formData,
         { headers: { token } }
       );
+=======
+      const response = await axios.post("https://krisikunjo-backend.vercel.app/api/product/add",formData, { headers: {token}});
+>>>>>>> dfad5336e5e169918a51f8fa061473cda4ff35a9
 
       if (response.data.success) {
         toast.success(response.data.message);
