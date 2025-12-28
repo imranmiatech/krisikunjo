@@ -14,7 +14,7 @@ const app = express()
 const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
-const allowedOrigins = ["https://krisikunjo-1oxt.vercel.app", "https://krisikunjo-p9zo.vercel.app"]
+const allowedOrigins = ["https://krisikunjo.shop","https://krisikunjo.vercel.app","https://krisikunjo-admin.vercel.app"]
 
 //middleware
 app.use(express.json())
@@ -24,6 +24,7 @@ app.use(cors({origin: allowedOrigins,
      allowedHeaders: ["Content-Type", "Authorization", "token"]
 
 }))
+
 //api endpoints
 app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
@@ -34,4 +35,5 @@ app.get('/',(req,res)=>{
     res.send('Api working')
 })
 
-app.listen(port, ()=> console.log('Server stared on port : '+port))
+// app.listen(port, ()=> console.log('Server stared on port : '+port))
+export default app;

@@ -22,7 +22,8 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between py-5 font-medium">
       <Link to="/">
-        <img src={assets.OO1} width={78} height={40} alt="" />
+        {/* <img src={assets.OO1} width={78} height={40} alt="" /> */}
+        <h1 className="text-2xl font-semibold text-green-600">কৃষি কুঞ্জ</h1>
       </Link>
       <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
         <NavLink className="flex flex-col items-center gap-1" to="/">

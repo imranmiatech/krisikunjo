@@ -14,9 +14,15 @@ const Contact = () => {
         <div className="flex flex-col justify-center items-start gap-6">
           <p className='font-semibold text-xl text-gray-600'>আমাদের স্টোর</p>
           <p className='text-gray-500'>নারায়ণধর বাজার <br /> হোসেনপুর, কিশোরগঞ্জ, বাংলাদেশ</p>
-          <p className='text-gray-500'>ফোন: ০১৯৪৩৭৪৭৫২৯<br />ইমেইল: imran@gmail.com</p>
+          <p className='text-gray-500'>ফোন: 01739299521<br />ইমেইল: ekhlasuddin.subuj1981@gmail.com</p>
           <p className='font-semibold text-xl text-gray-600'>ক্যারিয়ারস এ্যাট কৃশিকুঞ্জ</p>
+            {/* <br />
+            <p className='text-gray-500'> <br /> হোসেনপুর, কিশোরগঞ্জ, বাংলাদেশ</p>
+          <p className='text-gray-500'>ফোন: 01739299521<br />ইমেইল: ekhlasuddin.subuj1981@gmail.com</p>
+          <p className='font-semibold text-xl text-gray-600'>ক্যারিয়ারস এ্যাট কৃশিকুঞ্জ</p> */}
            <p className='text-gray-500'>আমাদের টিমে যোগ দিয়ে আপনার ক্যারিয়ারকে এগিয়ে নিন — কৃশিকুঞ্জ।</p>
+         
+
           <button className='border border-black px-8 py-3 text-sm hover:bg-black hover:text-white transition-all duration-500'>অন্বেষণ করুন</button>
 
         </div>

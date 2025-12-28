@@ -13,7 +13,7 @@ const Orders = () => {
       if(!token){
         return null
       }
-      const response = await axios.post("https://krisikunjo.vercel.app/api/order/userorders", {}, {headers: {token}})
+      const response = await axios.post("https://krisikunjo-backend.vercel.app/api/order/userorders", {}, {headers: {token}})
       if(response.data.success){
         let allOrdersItem = []
         response.data.orders.map((order)=>{

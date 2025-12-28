@@ -1,4 +1,3 @@
-// add product to user cart
 
 import userModel from "../models/userModel.js"
 

@@ -62,7 +62,7 @@ const onSubmitHanller = async (event) => {
     switch (method) {
       //API calls for cod
       case 'cod':
-        const response = await axios.post("https://krisikunjo.vercel.app/api/order/place", orderData, {headers: {token}})
+        const response = await axios.post("https://krisikunjo-backend.vercel.app/api/order/place", orderData, {headers: {token}})
         if(response.data.success){
           setCartItems({})
           navigate('/orders')
