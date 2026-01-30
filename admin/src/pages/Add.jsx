@@ -228,6 +228,23 @@ const Add = ({ token }) => {
           <div
             onClick={() =>
               setSizes((prev) =>
+                prev.includes("২৫০০০ পিছ")
+                  ? prev.filter((item) => item !== "২৫০০০ পিছ")
+                  : [...prev, "২৫০০০ পিছ"]
+              )
+            }
+          >
+            <p
+              className={`${
+                sizes.includes("২৫০০০ পিছ") ? "bg-pink-100" : "bg-slate-200"
+              }  px-3 py-1 cursor-pointer`}
+            >
+              ২৫০০০ পিছ
+            </p>
+          </div>
+          <div
+            onClick={() =>
+              setSizes((prev) =>
                 prev.includes("ছোট")
                   ? prev.filter((item) => item !== "ছোট")
                   : [...prev, "ছোট"]
