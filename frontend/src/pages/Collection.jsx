@@ -138,7 +138,7 @@ const Collection = () => {
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Topwear"}
+                value={"বীজ"}
                 onChange={toggleSubCategory}
               />{" "}
               বীজ
@@ -147,7 +147,7 @@ const Collection = () => {
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Bottomwear"}
+                value={"চারা"}
                 onChange={toggleSubCategory}
               />{" "}
               চারা
@@ -156,7 +156,7 @@ const Collection = () => {
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Winterwear"}
+                value={"ফল উদ্ভিদ"}
                 onChange={toggleSubCategory}
               />{" "}
               ফল উদ্ভিদ
