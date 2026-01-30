@@ -101,7 +101,7 @@ const Collection = () => {
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Men"}
+                value={"ফসল ও উদ্ভিদ"}
                 onChange={toggleCategory}
               />{" "}
               ফসল ও উদ্ভিদ
@@ -110,7 +110,7 @@ const Collection = () => {
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Women"}
+                value={"কৃষি সরঞ্জাম"}
                 onChange={toggleCategory}
               />{" "}
               কৃষি সরঞ্জাম
@@ -119,7 +119,7 @@ const Collection = () => {
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Kids"}
+                value={"সার ও কীটনাশক"}
                 onChange={toggleCategory}
               />{" "}
               সার ও কীটনাশক
