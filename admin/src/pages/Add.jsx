@@ -293,6 +293,40 @@ const Add = ({ token }) => {
               বড়
             </p>
           </div>
+          <div
+            onClick={() =>
+              setSizes((prev) =>
+                prev.includes("১০ গ্রাম")
+                  ? prev.filter((item) => item !== "১০ গ্রাম")
+                  : [...prev, "১০ গ্রাম"]
+              )
+            }
+          >
+            <p
+              className={`${
+                sizes.includes("১০ গ্রাম") ? "bg-pink-100" : "bg-slate-200"
+              }  px-3 py-1 cursor-pointer`}
+            >
+            ১০ গ্রাম
+            </p>
+          </div>
+          <div
+            onClick={() =>
+              setSizes((prev) =>
+                prev.includes("৫০ গ্রাম")
+                  ? prev.filter((item) => item !== "৫০ গ্রাম")
+                  : [...prev, "৫০ গ্রাম"]
+              )
+            }
+          >
+            <p
+              className={`${
+                sizes.includes("৫০ গ্রাম") ? "bg-pink-100" : "bg-slate-200"
+              }  px-3 py-1 cursor-pointer`}
+            >
+            ৫০ গ্রাম
+            </p>
+          </div>
         </div>
       </div>
       <div>
