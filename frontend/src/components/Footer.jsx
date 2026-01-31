@@ -29,12 +29,26 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <p className="text-xl font-madium mb-5">আমাদের সাথে যোগাযোগ করুন</p>
-          <ul className="flex flex-col gap-1 text-gray-600">
-            <li>+88 01739299521</li>
-            <li>ekhlasuddin.subuj1981@gmail.com</li>
-          </ul>
-        </div>
+  <p className="text-xl font-madium mb-5">আমাদের সাথে যোগাযোগ করুন</p>
+  <ul className="flex flex-col gap-1 text-gray-600">
+    <li>
+      <a 
+        href="tel:+8801739299521" 
+        className="hover:text-blue-600 transition-colors duration-200"
+      >
+        +88 01739299521
+      </a>
+    </li>
+    <li>
+      <a 
+        href="mailto:ekhlasuddin.subuj1981@gmail.com" 
+        className="hover:text-blue-600 transition-colors duration-200"
+      >
+        ekhlasuddin.subuj1981@gmail.com
+      </a>
+    </li>
+  </ul>
+</div>
       </div>
       <div>
         <div className="h-[1px] bg-black w-full px-10"></div>
