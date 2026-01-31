@@ -31,15 +31,15 @@ const Footer = () => {
         <div>
           <p className="text-xl font-madium mb-5">আমাদের সাথে যোগাযোগ করুন</p>
           <ul className="flex flex-col gap-1 text-gray-600">
-            <li>+88 01943747529</li>
-            <li>imran@gmail.com</li>
+            <li>+88 01739299521</li>
+            <li>ekhlasuddin.subuj1981@gmail.com</li>
           </ul>
         </div>
       </div>
       <div>
         <div className="h-[1px] bg-black w-full px-10"></div>
         <p className="py-5 text-sm text-center">
-          কপিরাইট ২০২৫ @ imran.com - সর্বস্বত্ব সংরক্ষিত।
+          কপিরাইট ২০২৫ @ ekhlasuddin.com - সর্বস্বত্ব সংরক্ষিত।
         </p>
       </div>
     </div>
