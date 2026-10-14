@@ -1,17 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prata&display=swap');
 @import "tailwindcss";
 
-*{
-    font-family : 'Outfit', sans-serif;
+* {
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-select, input, textarea {
-  border: 1px solid #c2c2c2;
-  border-radius: 4px;
-  outline-color: #c586a5;
-  font-family : 'Outfit', sans-serif;
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
 }
-.active{
-  background-color: #ffebf5;
-  border-color: #c586a5;
+
+/* Custom Scrollbar for sleek UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Base Form Reset */
+select, input, textarea {
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+select:focus, input:focus, textarea:focus {
+  border-color: #0f172a !important;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
 }

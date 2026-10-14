@@ -5,63 +5,81 @@ import NewsletterBox from '../components/NewsletterBox';
 
 const About = () => {
   return (
-    <>
-      <div className="text-2xl text-center pt-8 border-t">
-        <Title text1={"আমাদের"} text2={"সম্পর্কে"} />
+    <div className="pt-6">
+      <div className="text-2xl text-center py-6 border-t border-gray-100">
+        <Title text1={"ABOUT"} text2={"US"} />
       </div>
-      <div className="my-10 flex flex-col md:flex-row gap-16">
-        <img className="w-full md:max-w-[450px]" src={assets.Hero} alt="" />
-        <div className="flex flex-col justify-center gap-6 md:w-2/4 text-gray-600">
-          <p>
-          আমাদের ভিশন হলো দেশের কৃষি খাতে একটি নির্ভরযোগ্য ও অগ্রগামী অনলাইন কৃষি ব্র্যান্ড হিসেবে প্রতিষ্ঠিত হওয়া। 
-          আমরা চাই প্রতিটি কৃষক আধুনিক ও উন্নত কৃষি পদ্ধতির সুবিধা পাক এবং খাদ্য উৎপাদনে স্বনির্ভরতা অর্জন করুক। 
-          ভবিষ্যতে আমরা এমন একটি কৃষি ইকোসিস্টেম গড়ে তুলতে চাই, যা কৃষক, ভোক্তা ও 
-          পরিবেশ—তিনটির মধ্যেই ইতিবাচক পরিবর্তন আনবে।
-          </p>
-          <p>
-            আমরা বিশ্বাস করি গুণগত মান, সততা ও গ্রাহক সন্তুষ্টিই আমাদের সাফল্যের মূল চাবিকাঠি। 
-            প্রতিটি পণ্যের ক্ষেত্রে আমরা মান যাচাই ও নির্ভরযোগ্যতাকে সর্বোচ্চ গুরুত্ব দিই।
-             পাশাপাশি কৃষকদের সঙ্গে দীর্ঘমেয়াদি সম্পর্ক গড়ে তোলা, পরিবেশ রক্ষা এবং টেকসই কৃষি
-              ব্যবস্থাকে উৎসাহিত করাই আমাদের মূল মূল্যবোধ।
-          </p>
-          <b className="text-gray-800">🌱 আমাদের মিশন </b>
-          <p>
-            আমাদের মিশন হলো কৃষকদের হাতে পৌঁছে দেওয়া মানসম্মত, বিশ্বাসযোগ্য ও পরিবেশবান্ধব বীজ, 
-            চারা গাছ এবং কৃষি–সম্পর্কিত প্রয়োজনীয় পণ্য। আধুনিক কৃষি জ্ঞান ও প্রযুক্তির সমন্বয়ের মাধ্যমে আমরা 
-            এমন একটি প্ল্যাটফর্ম তৈরি করতে চাই, যেখানে কৃষক ও কৃষিপ্রেমীরা সহজেই সঠিক পণ্য ও তথ্য পেতে পারেন।
-             আমাদের লক্ষ্য হলো কৃষিকে আরও লাভজনক, টেকসই এবং সহজ করে তোলা।
-          </p>
-        </div>
-      </div>
-      <div className="text-4xl py-4">
-        <Title text1={"WHY"} text2={"CHOOSE US"} />
-        <div className="flex flex-col md:flex-row text-sm mb-20">
-          <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
-            <b>গুণগত মান নিশ্চিতকরণ:</b>
-            <p className="text-gray-600">
-              আমরা প্রতিটি বীজ, চারা গাছ ও কৃষি পণ্য কঠোর মান নিয়ন্ত্রণ প্রক্রিয়ার মাধ্যমে যাচাই করি।
-               গ্রাহকের কাছে পৌঁছানোর আগে পণ্যের মান ও কার্যকারিতা নিশ্চিত করাই আমাদের প্রধান লক্ষ্য।
-            </p>
-          </div>
-          <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
-            <b>বিশ্বাস ও আস্থার নিশ্চয়তা:</b>
-            <p className="text-gray-600">
-              স্বচ্ছতা ও নির্ভরযোগ্যতার মাধ্যমে আমরা গ্রাহকের আস্থা অর্জনে প্রতিশ্রুতিবদ্ধ।
-               প্রতিটি পণ্যের পেছনে রয়েছে আমাদের দায়িত্ববোধ ও প্রমাণিত মানের নিশ্চয়তা।
-            </p>
-          </div>
-          <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
-            <b>ব্যতিক্রমধর্মী গ্রাহক সেবা:</b>
-            <p className="text-gray-600">
-              গ্রাহকের সন্তুষ্টিই আমাদের অগ্রাধিকার, তাই আমরা দ্রুত, আন্তরিক ও দায়িত্বশীল সেবা প্রদান করি।
-               বিক্রয়-পূর্ব ও বিক্রয়-পরবর্তী প্রতিটি ধাপে আমরা গ্রাহকের পাশে থাকি।
-            </p>
-          </div>
-        </div>
 
+      {/* Brand Story Section */}
+      <div className="my-10 flex flex-col md:flex-row gap-12 lg:gap-16 items-center">
+        <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-sm bg-gray-100 aspect-[4/3]">
+          <img
+            className="w-full h-full object-cover"
+            src={assets.AboutImg}
+            alt="TexHunt Atelier and Design Studio"
+          />
+        </div>
+        
+        <div className="flex flex-col justify-center gap-6 md:w-1/2 text-gray-600 text-sm sm:text-base leading-relaxed">
+          <p>
+            <strong className="text-gray-900 font-semibold">TexHunt</strong> was founded on the conviction that everyday clothing should feel extraordinary. We bridge the gap between contemporary runway aesthetics and everyday practicality, crafting versatile apparel designed to make you feel confident, stylish, and comfortable in every setting.
+          </p>
+          <p>
+            We take pride in our meticulous manufacturing process. From sourcing ethically harvested cotton, premium linen, and durable denim to collaborating with master patternmakers, every piece is engineered for lasting silhouette and enduring quality.
+          </p>
+          
+          <div className="border-l-2 border-black pl-4 py-1">
+            <h3 className="text-gray-900 font-bold tracking-wide uppercase text-sm mb-1">
+              ✨ Our Mission
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-500">
+              To inspire individuality through thoughtfully designed, sustainable, and accessible clothing that seamlessly adapts to your dynamic lifestyle.
+            </p>
+          </div>
+        </div>
       </div>
-      <NewsletterBox/>
-    </>
+
+      {/* Why Choose Us */}
+      <div className="my-20">
+        <div className="text-center py-4">
+          <Title text1={"WHY"} text2={"CHOOSE TEXHUNT"} />
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div className="border border-gray-200 rounded-xl p-8 sm:p-10 flex flex-col gap-4 bg-white shadow-sm hover:shadow-md transition">
+            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-900">
+              01
+            </div>
+            <h4 className="font-semibold text-gray-900 text-base">Uncompromised Quality</h4>
+            <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">
+              Every garment undergoes stringent fabric testing, pre-shrinking, and seam reinforcement to guarantee long-lasting wear and comfort.
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-xl p-8 sm:p-10 flex flex-col gap-4 bg-white shadow-sm hover:shadow-md transition">
+            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-900">
+              02
+            </div>
+            <h4 className="font-semibold text-gray-900 text-base">Modern Contemporary Design</h4>
+            <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">
+              Our in-house design team crafts minimal, versatile cuts that move effortlessly with you from casual mornings to evening occasions.
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-xl p-8 sm:p-10 flex flex-col gap-4 bg-white shadow-sm hover:shadow-md transition">
+            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-900">
+              03
+            </div>
+            <h4 className="font-semibold text-gray-900 text-base">Exceptional Customer Care</h4>
+            <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">
+              Enjoy lightning-fast dispatch, transparent tracking, hassle-free 7-day exchanges, and friendly human support whenever you need assistance.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <NewsletterBox />
+    </div>
   );
 };
 

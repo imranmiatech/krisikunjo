@@ -1,28 +1,25 @@
 import axios from 'axios'
-import { createContext } from "react";
-import { useEffect, useState } from "react";
-// import { products } from "../assets/assets";
+import { createContext, useEffect, useState } from "react";
+import { products as defaultProducts } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-
 export const ShopContext = createContext();
 
- const ShopContextProvider = (props) => {
-  const currency = "BDT.";
-  const delivery_fee = 130;
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+const ShopContextProvider = (props) => {
+  const currency = "BDT ";
+  const delivery_fee = 120;
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://krisikunjo-backend.vercel.app";
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
-  const [products, setProducts] = useState([]);
-  const [token, setToken] = useState('')
+  const [products, setProducts] = useState(defaultProducts);
+  const [token, setToken] = useState('');
   const navigate = useNavigate();
 
-  //const backendUrl = import.meta.env.VITE_BACKEND_URL
   const addToCart = async (itemId, size) => {
     if (!size) {
-      toast.error("Please select a size");
+      toast.error("Please select a size first");
       return;
     }
     let cartData = structuredClone(cartItems);
@@ -38,20 +35,16 @@ export const ShopContext = createContext();
       cartData[itemId][size] = 1;
     }
     setCartItems(cartData);
+    toast.success("Added to cart successfully!");
 
-    if(token){
+    if (token) {
       try {
-        await axios.post("https://krisikunjo-backend.vercel.app/api/cart/add", {itemId, size}, {headers:{token}})
+        await axios.post(`${backendUrl}/api/cart/add`, { itemId, size }, { headers: { token } });
       } catch (error) {
-        console.log(error)
-        toast.error(error.message)
+        console.error(error);
       }
     }
   };
-
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
 
   const getCartCount = () => {
     let totalCount = 0;
@@ -69,51 +62,65 @@ export const ShopContext = createContext();
 
   const getProductData = async () => {
     try {
-      const response = await axios.get("https://krisikunjo-backend.vercel.app/api/product/list");
-      if (response.data.success) {
-        setProducts(response.data.products);
+      const response = await axios.get(`${backendUrl}/api/product/list`);
+      if (response.data.success && response.data.products && response.data.products.length > 0) {
+        // Only use backend products if they are clothing items, otherwise preserve TexHunt clothing catalog
+        const backendItems = response.data.products;
+        const hasAgriItems = backendItems.some(item => 
+          item.category === "ফসল ও উদ্ভিদ" || 
+          item.category === "কৃষি সরঞ্জাম" || 
+          item.subCategory === "বীজ" ||
+          (item.name && item.name.toLowerCase().includes("cucumber"))
+        );
+
+        if (!hasAgriItems) {
+          setProducts(backendItems);
+        } else {
+          // If backend has only old agri products, keep default TexHunt apparel catalog
+          setProducts(defaultProducts);
+        }
       } else {
-        toast.error(response.data.message);
+        setProducts(defaultProducts);
       }
     } catch (error) {
-      console.log(error)
-      toast.error(error.message)
+      console.log("Using default TexHunt catalog:", error.message);
+      setProducts(defaultProducts);
     }
   };
-  const getUserCart = async(token) => {
+
+  const getUserCart = async (authToken) => {
     try {
-       const response = await axios.post("https://krisikunjo-backend.vercel.app/api/cart/get", {}, {headers: {token}});
-       if(response.data.success){
-        setCartItems(response.data.cartData)
-       }
+      const response = await axios.post(`${backendUrl}/api/cart/get`, {}, { headers: { token: authToken } });
+      if (response.data.success) {
+        setCartItems(response.data.cartData);
+      }
     } catch (error) {
-      console.log(error)
-      toast.error(error.message) 
+      console.log(error);
     }
-  }
+  };
+
   useEffect(() => {
     getProductData();
   }, []);
 
-  useEffect(()=>{
-    if(!token && localStorage.getItem('token')){
-      setToken(localStorage.getItem('token'))
-      getUserCart(localStorage.getItem('token'))
+  useEffect(() => {
+    const savedToken = localStorage.getItem('token');
+    if (!token && savedToken) {
+      setToken(savedToken);
+      getUserCart(savedToken);
     }
-  },[])
+  }, []);
 
   const updateQuantity = async (itemId, size, quantity) => {
     let cartData = structuredClone(cartItems);
-
     cartData[itemId][size] = quantity;
-
     setCartItems(cartData);
-    if(token){
+
+    if (token) {
       try {
-        axios.post("https://krisikunjo-backend.vercel.app/api/cart/update", {itemId, size, quantity}, {headers: {token}})
+        await axios.post(`${backendUrl}/api/cart/update`, { itemId, size, quantity }, { headers: { token } });
       } catch (error) {
-       console.log(error)
-      toast.error(error.message) 
+        console.error(error);
       }
     }
   };
@@ -121,7 +128,8 @@ export const ShopContext = createContext();
   const getCartAmount = () => {
     let totalAmount = 0;
     for (const items in cartItems) {
-      let itemInfo = products.find((product) => product._id === items);
+      let itemInfo = products.find((product) => String(product._id) === String(items));
+      if (!itemInfo) continue;
       for (const item in cartItems[items]) {
         try {
           if (cartItems[items][item] > 0) {
@@ -134,7 +142,7 @@ export const ShopContext = createContext();
   };
 
   const value = {
-    products: products,
+    products,
     currency,
     delivery_fee,
     search,
@@ -151,10 +159,11 @@ export const ShopContext = createContext();
     setToken,
     token,
     setCartItems,
-    
   };
+
   return (
     <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
   );
 };
- export default ShopContextProvider;
+
+export default ShopContextProvider;

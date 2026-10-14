@@ -10,25 +10,28 @@ const Collection = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
-  const [sortType, setSortType] = useState("relavent");
+  const [sortType, setSortType] = useState("relevant");
 
   const toggleCategory = (e) => {
-    if (category.includes(e.target.value)) {
-      setCategory((prev) => prev.filter((item) => item !== e.target.value));
+    const val = e.target.value;
+    if (category.includes(val)) {
+      setCategory((prev) => prev.filter((item) => item !== val));
     } else {
-      setCategory((prev) => [...prev, e.target.value]);
+      setCategory((prev) => [...prev, val]);
     }
   };
+
   const toggleSubCategory = (e) => {
-    if (subCategory.includes(e.target.value)) {
-      setSubCategory((prev) => prev.filter((item) => item !== e.target.value));
+    const val = e.target.value;
+    if (subCategory.includes(val)) {
+      setSubCategory((prev) => prev.filter((item) => item !== val));
     } else {
-      setSubCategory((prev) => [...prev, e.target.value]);
+      setSubCategory((prev) => [...prev, val]);
     }
   };
 
   const applyFilter = () => {
-    let productsCopy = products.slice();
+    let productsCopy = products ? products.slice() : [];
 
     if (showSearch && search) {
       productsCopy = productsCopy.filter((item) =>
@@ -74,122 +77,121 @@ const Collection = () => {
   }, [sortType]);
 
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
-      {/* Filter and map products to display collection items */}
+    <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 pt-10 border-t border-gray-100">
+      {/* Filter Sidebar */}
       <div className="min-w-60">
-        <p
+        <button
           onClick={() => setShowFilter(!showFilter)}
-          className="my-2 text-xl flex items-center cursor-pointer gap-2"
+          className="my-2 text-base font-semibold flex items-center cursor-pointer gap-2 uppercase tracking-wider text-gray-900"
         >
-          ফিল্টার
+          FILTERS
           <img
-            className={`h-3 sm:hidden ${showFilter ? "rotate-90" : ""}`}
+            className={`h-3 sm:hidden transition-transform ${showFilter ? "rotate-90" : ""}`}
             src={assets.drop_down}
             alt=""
           />
-        </p>
+        </button>
 
         {/* CATEGORY FILTER */}
         <div
-          className={`border border-gray-300 pl-5 py-3 mt-6 ${
+          className={`border border-gray-200 rounded-lg p-5 mt-4 bg-white ${
             showFilter ? "" : "hidden"
           } sm:block`}
         >
-          <p className="mb-3 text-sm font-medium">ক্যাটাগরি/শ্রেণী</p>
-          <div className="flex flex-col gap-2 text-gray-700 text-sm font-light">
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"ফসল ও উদ্ভিদ"}
-                onChange={toggleCategory}
-              />{" "}
-              ফসল ও উদ্ভিদ
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"কৃষি সরঞ্জাম"}
-                onChange={toggleCategory}
-              />{" "}
-              কৃষি সরঞ্জাম
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"সার ও কীটনাশক"}
-                onChange={toggleCategory}
-              />{" "}
-              সার ও কীটনাশক
-            </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-900">
+            CATEGORIES
+          </p>
+          <div className="flex flex-col gap-2.5 text-gray-600 text-sm">
+            {["Men", "Women", "Kids"].map((cat) => (
+              <label key={cat} className="flex items-center gap-2 cursor-pointer hover:text-black">
+                <input
+                  className="w-4 h-4 accent-black rounded cursor-pointer"
+                  type="checkbox"
+                  value={cat}
+                  checked={category.includes(cat)}
+                  onChange={toggleCategory}
+                />
+                <span>{cat}</span>
+              </label>
+            ))}
           </div>
         </div>
-        {/* Subcategory Filter */}
+
+        {/* Subcategory / Type Filter */}
         <div
-          className={`border border-gray-300 pl-5 py-3 my-5 ${
+          className={`border border-gray-200 rounded-lg p-5 my-5 bg-white ${
             showFilter ? "" : "hidden"
           } sm:block`}
         >
-          <p className="mb-3 text-sm font-medium">প্রকার</p>
-          <div className="flex flex-col gap-2 text-gray-700 text-sm font-light">
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"বীজ"}
-                onChange={toggleSubCategory}
-              />{" "}
-              বীজ
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"চারা"}
-                onChange={toggleSubCategory}
-              />{" "}
-              চারা
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"ফল উদ্ভিদ"}
-                onChange={toggleSubCategory}
-              />{" "}
-              ফল উদ্ভিদ
-            </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-900">
+            TYPE
+          </p>
+          <div className="flex flex-col gap-2.5 text-gray-600 text-sm">
+            {["Topwear", "Bottomwear", "Winterwear"].map((type) => (
+              <label key={type} className="flex items-center gap-2 cursor-pointer hover:text-black">
+                <input
+                  className="w-4 h-4 accent-black rounded cursor-pointer"
+                  type="checkbox"
+                  value={type}
+                  checked={subCategory.includes(type)}
+                  onChange={toggleSubCategory}
+                />
+                <span>{type}</span>
+              </label>
+            ))}
           </div>
         </div>
       </div>
-      {/* Right side */}
+
+      {/* Right side: Product Catalog */}
       <div className="flex-1">
-        <div className="flex justify-between text-base sm:text-2xl mb-4">
-          <Title text1={"সমস্ত"} text2={"সংগ্রহ"} />
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+          <div>
+            <Title text1={"ALL"} text2={"COLLECTIONS"} />
+            <p className="text-xs text-gray-400 mt-[-6px]">
+              Showing {filteredProducts.length} items
+            </p>
+          </div>
+
           {/* Product Sort */}
           <select
+            value={sortType}
             onChange={(e) => setSortType(e.target.value)}
-            className="border-2 border-gray-300 text-sm px-2"
+            className="border border-gray-300 rounded px-3 py-2 text-xs sm:text-sm text-gray-700 bg-white outline-none cursor-pointer"
           >
-            <option value="relavent">ক্রমবিন্যাস করুন: প্রাসঙ্গিক</option>
-            <option value="low-high">ক্রমবিন্যাস করুন: কম থেকে বেশি</option>
-            <option value="high-low">ক্রমবিন্যাস করুন: বেশি থেকে কম</option>
+            <option value="relevant">Sort by: Relevant</option>
+            <option value="low-high">Sort by: Price: Low to High</option>
+            <option value="high-low">Sort by: Price: High to Low</option>
           </select>
         </div>
+
         {/* Map Products */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-4 gap-y-6">
-          {filteredProducts.map((item, index) => (
-            <ProductItem
-              key={index}
-              name={item.name}
-              id={item._id}
-              price={item.price}
-              image={item.image}
-            />
-          ))}
-        </div>
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 gap-y-8">
+            {filteredProducts.map((item, index) => (
+              <ProductItem
+                key={item._id || index}
+                name={item.name}
+                id={item._id}
+                price={item.price}
+                image={item.image}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="py-20 text-center text-gray-400">
+            <p className="text-base font-medium">No garments matched your selected filters.</p>
+            <button
+              onClick={() => {
+                setCategory([]);
+                setSubCategory([]);
+              }}
+              className="mt-4 text-xs font-semibold underline text-black uppercase"
+            >
+              Clear all filters
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

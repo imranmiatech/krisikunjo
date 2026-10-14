@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Title from './Title';
@@ -9,22 +8,24 @@ const LatestCollection = () => {
   const [latestProducts, setLatestProducts] = useState([]);
 
   useEffect(() => {
-    setLatestProducts(products.slice(0, 10));
+    if (products && products.length > 0) {
+      setLatestProducts(products.slice(0, 10));
+    }
   }, [products]);
 
   return (
-    <div className='my-10'>
-      <div className='text-center py-8 text-3xl'>
-        <Title text1={'সর্বশেষ'} text2={'সংগ্রহ'} />
-        <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-          আমাদের সর্বশেষ সংগ্রহে রয়েছে মানসম্মত বীজ, সুস্থ চারা গাছ এবং আধুনিক কৃষি পণ্য। প্রতিটি পণ্য পরীক্ষা-নিরীক্ষা করে নির্বাচিত, যা দেবে উচ্চ ফলন ও নির্ভরযোগ্যতা।
+    <section className='my-14'>
+      <div className='text-center py-6'>
+        <Title text1={'LATEST'} text2={'COLLECTIONS'} />
+        <p className='w-full sm:w-3/4 max-w-2xl m-auto text-xs sm:text-sm text-gray-500 leading-relaxed'>
+          Explore our newest seasonal drops curated with premium textiles, bespoke stitching, and timeless silhouettes crafted for everyday luxury.
         </p>
       </div>
 
-      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 gap-y-8'>
         {latestProducts.map((item, index) => (
           <ProductItem
-            key={index}
+            key={item._id || index}
             id={item._id}
             image={item.image}
             name={item.name}
@@ -32,7 +33,7 @@ const LatestCollection = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

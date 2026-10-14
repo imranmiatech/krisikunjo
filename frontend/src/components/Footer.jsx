@@ -1,62 +1,74 @@
 import React from "react";
-import { assets } from "../assets/assets";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <div>
-      <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 md:mt-40 text-sm">
-        <div>
-           <Link to="/">
-                  {/* <img src={assets.OO1} width={78} height={40} alt="" /> */}
-                  <h1 className="text-2xl font-semibold text-green-600">কৃষি কুঞ্জ</h1>
-                </Link>
-          <p className="w-full md:2/3 text-gray-600">
-            আমরা আধুনিক কৃষি প্রযুক্তি, ফসল ব্যবস্থাপনা ও টেকসই কৃষি সমাধানে কাজ
-            করি। কৃষকদের জন্য নির্ভরযোগ্য তথ্য ও সহায়ক দিকনির্দেশনা প্রদানই
-            আমাদের লক্ষ্য। উন্নত কৃষির মাধ্যমে দেশের খাদ্য নিরাপত্তা নিশ্চিত
-            করাই আমাদের প্রতিশ্রুতি। কৃষকের উন্নয়নই আমাদের শক্তি এবং আমাদের
-            অনুপ্রেরণা।
+    <footer className="mt-24 border-t border-gray-200 pt-16 pb-8 text-gray-600 text-sm">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14 max-w-7xl mx-auto">
+        {/* Brand Information */}
+        <div className="md:col-span-2">
+          <Link to="/" className="inline-flex items-baseline gap-1 mb-4 group">
+            <span className="text-2xl font-extrabold tracking-widest text-black">
+              TEXHUNT
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-600 inline-block"></span>
+          </Link>
+          <p className="text-gray-500 text-xs sm:text-sm leading-relaxed max-w-md">
+            TexHunt is a contemporary clothing brand combining modern tailoring with breathable, durable fabrics. We design timeless staples and streetwear collections engineered for everyday confidence.
           </p>
         </div>
+
+        {/* Quick Links */}
         <div>
-          <p className="text-xl font-madium mb-5">কোম্পানি</p>
-          <ul className="flex flex-col gap-1 text-gray-600">
-            <Link to="/"><li>হোম</li></Link>
-            <Link to="/about"><li>আমাদের সম্পর্কে</li></Link>  
-            <Link to="/contact"><li>যোগাযোগ</li></Link>
-            
-            <li>গোপনীয়তা নীতি</li>
+          <p className="text-xs font-bold tracking-wider uppercase text-gray-900 mb-4">
+            QUICK LINKS
+          </p>
+          <ul className="flex flex-col gap-2.5 text-xs sm:text-sm text-gray-500">
+            <Link to="/" className="hover:text-black transition">Home</Link>
+            <Link to="/collection" className="hover:text-black transition">All Collections</Link>
+            <Link to="/about" className="hover:text-black transition">About TexHunt</Link>
+            <Link to="/contact" className="hover:text-black transition">Customer Care</Link>
           </ul>
         </div>
+
+        {/* Contact info */}
         <div>
-  <p className="text-xl font-madium mb-5">আমাদের সাথে যোগাযোগ করুন</p>
-  <ul className="flex flex-col gap-1 text-gray-600">
-    <li>
-      <a 
-        href="tel:+8801739299521" 
-        className="hover:text-blue-600 transition-colors duration-200"
-      >
-        +88 01739299521
-      </a>
-    </li>
-    <li>
-      <a 
-        href="mailto:ekhlasuddin.subuj1981@gmail.com" 
-        className="hover:text-blue-600 transition-colors duration-200"
-      >
-        ekhlasuddin.subuj1981@gmail.com
-      </a>
-    </li>
-  </ul>
-</div>
+          <p className="text-xs font-bold tracking-wider uppercase text-gray-900 mb-4">
+            GET IN TOUCH
+          </p>
+          <ul className="flex flex-col gap-2.5 text-xs sm:text-sm text-gray-500">
+            <li>
+              <a
+                href="tel:+8801739299521"
+                className="hover:text-black transition"
+              >
+                +880 1739-299521
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:support@texhunt.com"
+                className="hover:text-black transition"
+              >
+                support@texhunt.com
+              </a>
+            </li>
+            <li className="text-gray-400">
+              Banani 11, Dhaka, Bangladesh
+            </li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <div className="h-[1px] bg-black w-full px-10"></div>
-        <p className="py-5 text-sm text-center">
-          কপিরাইট ২০২৫ @ ekhlasuddin.com - সর্বস্বত্ব সংরক্ষিত।
-        </p>
+
+      <div className="border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+        <p>© 2026 TexHunt. All rights reserved.</p>
+        <div className="flex gap-6">
+          <span className="hover:text-gray-600 cursor-pointer">Privacy Policy</span>
+          <span className="hover:text-gray-600 cursor-pointer">Terms of Service</span>
+          <span className="hover:text-gray-600 cursor-pointer">Shipping & Returns</span>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
